@@ -15,6 +15,8 @@ def robot_txt(url):
 
     is_allowed = robot.can_fetch("*", url)
 
+    return is_allowed
+
 def is_allowed_url(domain,url):
     if domain in url:
         return True
@@ -39,7 +41,10 @@ def get_links(html):
                 if not is_path_absolute(links['href']):
                     link = domain + links['href']
 
-                print link
+                is_allowed_domain = is_allowed_url(domain,link)
+
+                if is_allowed_domain:
+                    print link
     except (HTTPError,URLError) as e:
         print e
         pass
