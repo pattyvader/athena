@@ -15,6 +15,12 @@ def robot_txt(url):
 
     is_allowed = robot.can_fetch("*", url)
 
+def is_allowed_url(domain,url):
+    if domain in url:
+        return True
+
+    return False
+
 def is_path_absolute(url):
     return bool(urlparse(url).netloc)
 
@@ -45,12 +51,12 @@ def get_html_page(url):
 
     return html
 
-#def get_extract_text():
-
 def main():
-    robot_txt(url_seed)
-    #html_page = get_html_page(url_seed)
-    #get_links(html_page)
+    is_allowed = robot_txt(url_seed)
+
+    if is_allowed:
+        html_page = get_html_page(url_seed)
+        get_links(html_page)
 
 if __name__ == "__main__":
     main()
