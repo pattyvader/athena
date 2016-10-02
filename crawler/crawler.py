@@ -31,7 +31,6 @@ def get_links(html):
         soup = BeautifulSoup(html)
         link_list = []
 
-        #obtains all attributtes 'href'
         for links in soup.find_all('a', href=True):
             if not "#" in links['href']:
                 link = links['href']
@@ -64,12 +63,13 @@ def main():
     is_allowed = robot_txt(url_seed)
 
     if is_allowed:
-        teste =[]
-        html_page = get_html_page(url_seed)
-        teste = get_links(html_page)
+        list_links = []
 
-        for item in teste:
-            print item
+        html_page = get_html_page(url_seed)
+        list_links = get_links(html_page)
+
+        for page in list_links:
+            html = get_html_page(page)
 
 if __name__ == "__main__":
     main()
