@@ -29,6 +29,7 @@ def is_path_absolute(url):
 def get_links(html):
     try:
         soup = BeautifulSoup(html)
+        link_list = []
 
         #obtains all attributtes 'href'
         for links in soup.find_all('a', href=True):
@@ -44,7 +45,10 @@ def get_links(html):
                 is_allowed_domain = is_allowed_url(domain,link)
 
                 if is_allowed_domain:
-                    print link
+                    if not link in link_list:
+                        link_list.append(link)
+
+        return link_list
     except (HTTPError,URLError) as e:
         print e
         pass
@@ -60,8 +64,12 @@ def main():
     is_allowed = robot_txt(url_seed)
 
     if is_allowed:
+        teste =[]
         html_page = get_html_page(url_seed)
-        get_links(html_page)
+        teste = get_links(html_page)
+
+        for item in teste:
+            print item
 
 if __name__ == "__main__":
     main()
