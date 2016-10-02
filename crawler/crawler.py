@@ -1,11 +1,19 @@
 import requests
 import urllib2
+import robotparser
 from bs4 import BeautifulSoup
 from urllib2 import URLError
 from urllib2 import HTTPError
 from urlparse import urlparse
 
 url_seed = "https://www.python.org/"
+
+def robot_txt(url):
+    robot = robotparser.RobotFileParser()
+    robot.set_url(url)
+    robot.read()
+
+    is_allowed = robot.can_fetch("*", url)
 
 def is_path_absolute(url):
     return bool(urlparse(url).netloc)
@@ -40,8 +48,9 @@ def get_html_page(url):
 #def get_extract_text():
 
 def main():
-    html_page = get_html_page(url_seed)
-    get_links(html_page)
+    robot_txt(url_seed)
+    #html_page = get_html_page(url_seed)
+    #get_links(html_page)
 
 if __name__ == "__main__":
     main()
