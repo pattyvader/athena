@@ -72,12 +72,13 @@ def main():
 
         for page in list_links:
             html = get_html_page("http://" + page)
-            url, title, description = extract_data(html)
+            url, title, description, image = extract_data(html)
 
             #Extract data of the page and print in prompt
             print "URL:" + str(url)
             print "Title:" + str(title)
-            print "Description:" + str(description) 
+            print "Description:" + str(description)
+            print "Image:" + str(image)
             print "--------------------------------"
 
 if __name__ == "__main__":

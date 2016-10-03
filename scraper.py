@@ -15,9 +15,14 @@ def extract_data(html):
     for i in url:
         url = i["content"]
 
-    description = soup.find_all('meta', attrs={'property':'og:descriptio'})
+    description = soup.find_all('meta', attrs={'property':'og:description'})
 
     for i in description:
         description = i["content"]
 
-    return url, title, description
+    image = soup.find_all('meta', attrs={'property':'og:image'})
+
+    for i in image:
+        image = i["content"]
+
+    return url, title, description, image
