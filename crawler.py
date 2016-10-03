@@ -77,7 +77,7 @@ def main():
             html = get_html_page("http://" + page)
             url, title, description, image, text = extract_data(html)
 
-            #Extract data of the page and print in prompt
+            #Extract page's data and print in prompt
             print "URL:" + str(url)
             print "Title:" + str(title)
             print "Description:" + str(description)
