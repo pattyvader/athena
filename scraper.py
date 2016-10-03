@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from bs4 import BeautifulSoup
 
 def extract_data(html):
@@ -25,4 +28,8 @@ def extract_data(html):
     for i in image:
         image = i["content"]
 
-    return url, title, description, image
+    text = ""
+    for i in soup.find_all('p'):
+        text += i.get_text()
+
+    return url, title, description, image, text

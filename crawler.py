@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import requests
 import urllib2
 import robotparser
@@ -72,14 +75,15 @@ def main():
 
         for page in list_links:
             html = get_html_page("http://" + page)
-            url, title, description, image = extract_data(html)
+            url, title, description, image, text = extract_data(html)
 
             #Extract data of the page and print in prompt
             print "URL:" + str(url)
             print "Title:" + str(title)
             print "Description:" + str(description)
             print "Image:" + str(image)
-            print "--------------------------------"
+            print "Text:" + str(text)
+            print "--------------------------------------------------------------------------------------------------------"
 
 if __name__ == "__main__":
     main()
