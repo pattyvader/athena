@@ -15,4 +15,9 @@ def extract_data(html):
     for i in url:
         url = i["content"]
 
-    return url, title
+    description = soup.find_all('meta', attrs={'property':'og:descriptio'})
+
+    for i in description:
+        description = i["content"]
+
+    return url, title, description
