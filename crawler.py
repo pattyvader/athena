@@ -9,6 +9,7 @@ from urllib2 import URLError
 from urllib2 import HTTPError
 from urlparse import urlparse
 from scraper import extract_data
+from indexer import insert_page
 
 url_seed = "https://www.python.org/"
 
@@ -77,13 +78,15 @@ def main():
             html = get_html_page("http://" + page)
             url, title, description, image, text = extract_data(html)
 
+            insert_page(url, title, description, image, text)
+            
             #Extract page's data and print in prompt
-            print "URL:" + str(url)
-            print "Title:" + str(title)
-            print "Description:" + str(description)
-            print "Image:" + str(image)
-            print "Text:" + str(text.encode('utf-8'))
-            print "--------------------------------------------------------------------------------------------------------"
+            #print "URL:" + str(url)
+            #print "Title:" + str(title)
+            #print "Description:" + str(description)
+            #print "Image:" + str(image)
+            #print "Text:" + str(text.encode('utf-8'))
+            #print "--------------------------------------------------------------------------------------------------------"
 
 if __name__ == "__main__":
     main()
