@@ -82,7 +82,7 @@ def main():
             print "Title:" + str(title)
             print "Description:" + str(description)
             print "Image:" + str(image)
-            print "Text:" + str(text)
+            print "Text:" + str(text.encode('utf-8'))
             print "--------------------------------------------------------------------------------------------------------"
 
 if __name__ == "__main__":
