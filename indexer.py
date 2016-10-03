@@ -4,16 +4,18 @@ from elasticsearch import Elasticsearch
 es = Elasticsearch()
 
 def create_index():
+    res = es.indices.create(index='athena', ignore=400)
+
+def insert_page(url, title, description, image, text):
     doc = {
-        'url': 'https://www.python.org/events/python-events/462/',
-        'title': 'Python Brasil [12]',
-        'description':'The official home of the Python Programming Language',
-        'image':'https://www.python.org/static/opengraph-icon-200x200.png',
-        'text':'Notice: While Javascript is not essential for this website'
+        'url': url,
+        'title': title,
+        'description':description,
+        'image':image,
+        'text':text
     }
 
     res = es.index(index="athena", doc_type='page', body=doc)
-    print(res['created'])
 
 def main():
     create_index()
