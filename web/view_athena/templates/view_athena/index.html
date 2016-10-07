@@ -18,16 +18,16 @@
         <input type="text" name="term_search" size="60" value="{{ term_search }}">
           <input type="submit" value="Go">
         </form>
-      <div>
-        {% for page in pages %}
-          <ul style = 'list-style-type: none;'>
-            <li>
-              <a href={{ page.source.url }}>{{ page.source.title }}</a>
-              <p>{{ page.source.url }}</p>
-              <p>{{ page.source.description }}...{{ page.highlight|safe }}...</p>
-            </li>
+      <div id='pages'>
+        <ul style = 'list-style-type: none;'>
+          {% for page in pages %}
+              <li id='list_pages'>
+                <a id='title' href={{ page.source.url }}>{{ page.source.title }}</a>
+                <p id='url'>{{ page.source.url }}</p>
+                <p id='description'>{{ page.source.description }}...{{ page.highlight|safe }}...</p>
+              </li>
+            {% endfor %}
           </ul>
-        {% endfor %}
       </div>
   </body>
 </html>
