@@ -8,3 +8,28 @@
   margin-bottom: 30px;
   margin-left: 30%;
 }
+
+#pages{
+  width: 100%;
+  margin-left: -50px;
+  margin-top: 30px;
+}
+
+#title{
+  color:#002080;
+  font-size: 18px;
+}
+
+#url{
+  color:#006600;
+  font-size: 14px;
+}
+
+#description{
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+#list_pages{
+  padding-bottom: 20px;
+}
