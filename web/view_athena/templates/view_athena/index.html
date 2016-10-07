@@ -18,6 +18,14 @@
           <input type="text" name="term_search" size="60">
           <input type="submit" value="Go">
         </form>
+      <div>
+        {% for page in pages %}
+          <ul style = 'list-style-type: none;''>
+            <li>
+              <p>{{ page.title }}</p>
+            </li>
+          </ul>
+        {% endfor %}
       </div>
   </body>
 </html>
