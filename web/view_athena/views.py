@@ -21,8 +21,8 @@ def search(request):
 def search_term(term):
     es = Elasticsearch()
 
-    res = es.search(index="athena", body={"query": {"bool": {"should": [ { "match": { "title": "\"" + str(term) + "\"" }},
-                                                                         { "match": { "text": "\"" + str(term) + "\"" }},
-                                                                         { "match": { "description": "\"" + str(term) + "\"" }}]}},"highlight": {"fields" : {"text" : {}}}})
+    res = es.search(index="athena", body={"query": {"bool": {"should": [ { "match_phrase": { "title": "\"" + str(term) + "\"" }},
+                                                                         { "match_phrase": { "text": "\"" + str(term) + "\"" }},
+                                                                         { "match_phrase": { "description": "\"" + str(term) + "\"" }}]}},"highlight": {"fields" : {"text" : {}}}})
 
     return res
