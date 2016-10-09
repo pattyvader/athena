@@ -14,10 +14,11 @@
   <body>
       <div id="main">
         <img id="logo" src="../static/images/python.png" alt="" height="100" width="100"></br>
-        <form action="/search/?term_search" method="get">
+        <form action="/search/" method="get">
         <input type="text" name="term_search" size="60" value="{{ term_search }}">
           <input type="submit" value="Go">
         </form>
+      </div>
       <div id='pages'>
         <ul style = 'list-style-type: none;'>
           {% for page in pages %}
